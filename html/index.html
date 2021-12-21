@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>ポートフォリオ</title>
+    </head>
+    <body>
+        <div class="space-y-6 max-w-3xl mx-auto px-8 pt-4">
+            <h2 class="text-xl font-medium text-gray-900 dark:text-white">マイナビ求人検索</h2>
+        </div>
+        <div class="space-y-6 max-w-3xl mx-auto p-8">
+            <div>
+                <label class="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">
+                    検索キーワード</label>
+                <input type="text" name="search-word" id="search-word" class="appearance-none border rounded border-solid border-gray-500 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+            </div>
+            <div>
+                <button id="search" class="px-5 py-1 text-right bg-blue-400 text-lg text-white font-semibold rounded hover:bg-blue-500" name="search">検索</button>
+            </div>
+            <div>
+                <textarea name="log-area" id="log-area" cols="30" rows="10" class="
+        form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-500 rounded transition ease-in-out m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "></textarea>
+            </div>
+        </div>
+    </body>
+</html>
+        <script type="text/javascript" src="eel.js"></script>
+        <script>
+            let search_word = document.getElementById('search-word')
+            search.main('click', async () => {
+                if(search_word.value != ""){
+                    let val = await eel.main(search_word.value)();
+                    console.log(val)
+                }else{
+                    alert("検索キーワードを入力してください");
+                }
+            })
+
+            eel.expose(view_log_js)
+            function view_log_js(text){
+                document.getElementById('log-area').value += text + "\n";
+            }
+        </script>
+
